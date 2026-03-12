@@ -25,4 +25,7 @@ interface MemoRepository {
     fun getPendingSyncCount(): Flow<Int>
     fun getTotalCount(): Flow<Int>
     fun getActiveDayCount(): Flow<Int>
+    fun getDailyStats(days: Int = 90): Flow<Map<Long, Int>>
+    fun getRecentMemos(days: Int): Flow<List<Memo>>
+    suspend fun getAllMemosOnce(): List<Memo>
 }

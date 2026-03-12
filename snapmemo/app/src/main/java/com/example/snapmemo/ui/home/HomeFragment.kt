@@ -98,8 +98,17 @@ class HomeFragment : Fragment() {
     private fun observeState() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collectLatest { state ->
-                    adapter.submitList(state.memos)
+                launch {
+                    viewModel.uiState.collectLatest { state ->
+                        adapter.submitList(state.memos)
+                        val hasContent = state.memos.isNotEmpty()
+                        binding.tvEmpty.visibility = if (hasContent) View.GONE else View.VISIBLE
+                    }
+                }
+                launch {
+                    viewModel.dailyStats.collectLatest { stats ->
+                        binding.heatmapView?.setData(stats)
+                    }
                 }
             }
         }

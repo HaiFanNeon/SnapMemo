@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/widget_background"
+    android:padding="12dp"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/tv_quick_hint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="快速记录…"
+        android:textColor="#AAFFFFFF"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/btn_quick_add"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@android:drawable/ic_input_add"
+        android:tint="#FFFFFF"
+        android:contentDescription="快速添加笔记" />
+
+</LinearLayout>

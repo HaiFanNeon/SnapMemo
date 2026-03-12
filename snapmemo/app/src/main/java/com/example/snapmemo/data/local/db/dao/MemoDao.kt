@@ -11,6 +11,11 @@ data class DailyStat(
     val count: Int
 )
 
+data class DailyStatEpoch(
+    val dayEpoch: Long,
+    val count: Int
+)
+
 @Dao
 interface MemoDao {
 
@@ -115,4 +120,19 @@ interface MemoDao {
 
     @Query("SELECT * FROM memos WHERE isDeleted = 0 AND state = 'NORMAL' AND id = :id")
     fun getMemoById(id: String): Flow<MemoEntity?>
+
+    @Query("""
+        SELECT (strftime('%s', date(createTime / 1000, 'unixepoch', 'localtime')) * 1000) as dayEpoch,
+               COUNT(*) as count
+        FROM memos WHERE isDeleted = 0 AND createTime >= :since
+        GROUP BY dayEpoch
+        ORDER BY dayEpoch DESC
+    """)
+    fun getDailyStats(since: Long): Flow<List<DailyStatEpoch>>
+
+    @Query("SELECT * FROM memos WHERE isDeleted = 0 AND state = 'NORMAL' AND createTime >= :since ORDER BY createTime DESC")
+    fun getMemosCreatedAfter(since: Long): Flow<List<MemoEntity>>
+
+    @Query("SELECT * FROM memos WHERE isDeleted = 0 AND state = 'NORMAL' ORDER BY createTime DESC")
+    suspend fun getAllActiveSync(): List<MemoEntity>
 }

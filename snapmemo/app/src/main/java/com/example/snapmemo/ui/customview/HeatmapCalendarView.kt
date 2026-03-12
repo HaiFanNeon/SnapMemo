@@ -47,6 +47,17 @@ class HeatmapCalendarView @JvmOverloads constructor(
         invalidate()
     }
 
+    /** 接收 epoch ms -> count 的 Map，由 HomeViewModel.dailyStats 提供 */
+    fun setData(stats: Map<Long, Int>) {
+        dailyStats = stats.entries.associate { (epochMs, count) ->
+            val date = java.time.Instant.ofEpochMilli(epochMs)
+                .atZone(java.time.ZoneId.systemDefault())
+                .toLocalDate()
+            date.format(formatter) to count
+        }
+        invalidate()
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         val today = LocalDate.now()

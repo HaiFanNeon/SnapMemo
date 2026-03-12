@@ -1,6 +1,7 @@
 package com.example.snapmemo.di
 
 import com.example.snapmemo.data.local.datastore.UserPreferences
+import com.example.snapmemo.data.remote.api.AiServiceApi
 import com.example.snapmemo.data.remote.api.MemosAttachmentApi
 import com.example.snapmemo.data.remote.api.MemosAuthApi
 import com.example.snapmemo.data.remote.api.MemosMemoApi
@@ -71,4 +72,30 @@ object NetworkModule {
     @Singleton
     fun provideAttachmentApi(retrofit: Retrofit): MemosAttachmentApi =
         retrofit.create(MemosAttachmentApi::class.java)
+
+    /**
+     * AI 服务 API：默认使用 OpenAI 兼容格式，baseUrl 可在设置中配置
+     * 当前未配置时返回 null，AiRepositoryImpl 会降级为本地占位摘要
+     */
+    @Provides
+    @Singleton
+    fun provideAiServiceApi(prefs: UserPreferences, gson: Gson): AiServiceApi? {
+        val aiBaseUrl = runBlocking { prefs.aiBaseUrl.first() } ?: return null
+        val client = OkHttpClient.Builder()
+            .addInterceptor { chain ->
+                val token = runBlocking { prefs.aiApiKey.first() } ?: ""
+                val req = chain.request().newBuilder()
+                    .addHeader("Authorization", "Bearer $token")
+                    .build()
+                chain.proceed(req)
+            }
+            .readTimeout(60, TimeUnit.SECONDS)
+            .build()
+        return Retrofit.Builder()
+            .baseUrl(aiBaseUrl)
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+            .create(AiServiceApi::class.java)
+    }
 }

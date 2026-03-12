@@ -9,12 +9,13 @@ import java.time.format.DateTimeParseException
 
 fun AttachmentEntity.toDomain(): Attachment = Attachment(
     id = id,
+    memoId = memoId,
     filename = filename,
     mimeType = mimeType,
     size = size,
     localPath = localPath,
     remoteUrl = externalLink,
-    createTime = Instant.ofEpochMilli(createTime)
+    createTime = createTime
 )
 
 fun AttachmentDto.toEntity(memoId: String? = null): AttachmentEntity {

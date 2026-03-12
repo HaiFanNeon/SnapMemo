@@ -25,6 +25,8 @@ class UserPreferences @Inject constructor(
         val KEY_APP_MODE = stringPreferencesKey("app_mode")
         val KEY_LAST_SYNC_TIME = longPreferencesKey("last_sync_time")
         val KEY_USER_ID = stringPreferencesKey("user_id")
+        val KEY_AI_BASE_URL = stringPreferencesKey("ai_base_url")
+        val KEY_AI_API_KEY = stringPreferencesKey("ai_api_key")
     }
 
     val accessToken: Flow<String?> = context.dataStore.data.map { it[KEY_ACCESS_TOKEN] }
@@ -36,6 +38,8 @@ class UserPreferences @Inject constructor(
     }
     val lastSyncTime: Flow<Long?> = context.dataStore.data.map { it[KEY_LAST_SYNC_TIME] }
     val userId: Flow<String?> = context.dataStore.data.map { it[KEY_USER_ID] }
+    val aiBaseUrl: Flow<String?> = context.dataStore.data.map { it[KEY_AI_BASE_URL] }
+    val aiApiKey: Flow<String?> = context.dataStore.data.map { it[KEY_AI_API_KEY] }
 
     suspend fun saveAccessToken(token: String) {
         context.dataStore.edit { it[KEY_ACCESS_TOKEN] = token }
@@ -60,6 +64,13 @@ class UserPreferences @Inject constructor(
 
     suspend fun updateLastSyncTime(time: Long) {
         context.dataStore.edit { it[KEY_LAST_SYNC_TIME] = time }
+    }
+
+    suspend fun saveAiConfig(baseUrl: String, apiKey: String) {
+        context.dataStore.edit {
+            it[KEY_AI_BASE_URL] = baseUrl
+            it[KEY_AI_API_KEY] = apiKey
+        }
     }
 
     suspend fun clearAll() {

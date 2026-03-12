@@ -31,6 +31,7 @@ lifecycle = "2.8.7"
 appcompat = "1.7.0"
 activity = "1.10.1"
 hiltCommon = "1.3.0"
+hiltWork = "1.3.0"
 
 [libraries]
 # Core
@@ -113,6 +114,7 @@ turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 truth = { module = "com.google.truth:truth", version = "1.4.4" }
 robolectric = { module = "org.robolectric:robolectric", version = "4.13" }
 androidx-hilt-common = { group = "androidx.hilt", name = "hilt-common", version.ref = "hiltCommon" }
+androidx-hilt-work = { group = "androidx.hilt", name = "hilt-work", version.ref = "hiltWork" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

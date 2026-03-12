@@ -45,5 +45,13 @@ class SyncWorker @AssistedInject constructor(
                 .setConstraints(constraints)
                 .build()
         }
+
+        fun enqueue(workManager: WorkManager) {
+            workManager.enqueueUniquePeriodicWork(
+                WORK_NAME,
+                ExistingPeriodicWorkPolicy.KEEP,
+                buildPeriodicRequest()
+            )
+        }
     }
 }

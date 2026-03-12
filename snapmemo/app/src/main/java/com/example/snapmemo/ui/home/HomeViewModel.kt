@@ -42,6 +42,10 @@ class HomeViewModel @Inject constructor(
     val activeDayCount: StateFlow<Int> = memoRepository.getActiveDayCount()
         .stateIn(viewModelScope, SharingStarted.Eagerly, 0)
 
+    /** dayEpoch (UTC 00:00 ms) -> memo count, 用于 HeatmapCalendarView */
+    val dailyStats: StateFlow<Map<Long, Int>> = memoRepository.getDailyStats(90)
+        .stateIn(viewModelScope, SharingStarted.Eagerly, emptyMap())
+
     init {
         loadMemos()
     }

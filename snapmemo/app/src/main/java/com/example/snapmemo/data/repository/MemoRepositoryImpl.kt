@@ -206,4 +206,23 @@ class MemoRepositoryImpl @Inject constructor(
     override fun getPendingSyncCount(): Flow<Int> = memoDao.getPendingSyncCount()
     override fun getTotalCount(): Flow<Int> = memoDao.getTotalCount()
     override fun getActiveDayCount(): Flow<Int> = memoDao.getActiveDayCount()
+
+    override fun getDailyStats(days: Int): Flow<Map<Long, Int>> {
+        val since = System.currentTimeMillis() - days * 86_400_000L
+        return memoDao.getDailyStats(since).map { rows ->
+            rows.associate { row -> row.dayEpoch to row.count }
+        }
+    }
+
+    override fun getRecentMemos(days: Int): Flow<List<Memo>> {
+        val since = System.currentTimeMillis() - days * 86_400_000L
+        return buildMemoFlow(memoDao.getMemosCreatedAfter(since))
+    }
+
+    override suspend fun getAllMemosOnce(): List<Memo> =
+        memoDao.getAllActiveSync().map { entity ->
+            val tags = tagDao.getTagsForMemoSync(entity.id)
+            val attachments = attachmentDao.getByMemoIdSync(entity.id).map { it.toDomain() }
+            entity.toDomain(tags, attachments)
+        }
 }

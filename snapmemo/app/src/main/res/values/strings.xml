@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MemoFlow</string>
+    <string name="app_name">Memos</string>
 
     <!-- 导航菜单 -->
     <string name="nav_all_notes">全部笔记</string>
@@ -102,6 +102,11 @@
     <string name="conflict_keep_local">保留本地</string>
     <string name="conflict_use_remote">使用远端</string>
     <string name="conflict_manual_merge">手动合并</string>
+
+    <!-- 小组件 -->
+    <string name="widget_daily_review_desc">每日回顾笔记小组件</string>
+    <string name="widget_quick_input_desc">快速新建笔记小组件</string>
+    <string name="widget_heatmap_desc">笔记热力图小组件</string>
 
     <!-- 通用 -->
     <string name="ok">确定</string>

@@ -1,36 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    android:gravity="center"
     android:orientation="vertical"
-    android:padding="@dimen/spacing_lg">
+    android:background="@color/background">
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/ic_ai_summary"
-        app:tint="@color/primary"
-        xmlns:app="http://schemas.android.com/apk/res-auto" />
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_ai"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/background"
+        app:navigationIcon="@android:drawable/ic_menu_close_clear_cancel"
+        app:title="AI 摘要" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:indeterminate="true"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="@dimen/spacing_base">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_base"
+                app:cardElevation="2dp"
+                app:cardCornerRadius="@dimen/card_corner_radius">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_base">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AI 摘要"
+                        android:textColor="@color/primary"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="@dimen/spacing_sm" />
+
+                    <TextView
+                        android:id="@+id/tv_summary_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="点击生成摘要…"
+                        android:textColor="@color/on_background"
+                        android:textSize="@dimen/text_size_body"
+                        android:lineSpacingMultiplier="1.6" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="关键词"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:layout_marginBottom="@dimen/spacing_xs" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_keywords"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 操作按钮 -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_base"
-        android:text="@string/ai_summary_title"
-        android:textColor="@color/on_background"
-        android:textSize="@dimen/text_size_title"
-        android:textStyle="bold" />
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_base"
+        android:gravity="end">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_sm"
-        android:text="@string/ai_summary_placeholder"
-        android:textColor="@color/text_secondary"
-        android:textSize="@dimen/text_size_body"
-        android:gravity="center" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_stream"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_sm"
+            android:text="流式生成" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_generate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="生成摘要"
+            app:backgroundTint="@color/primary" />
+
+    </LinearLayout>
 
 </LinearLayout>
