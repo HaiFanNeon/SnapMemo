@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 笔记卡片样式 -->
+    <style name="Widget.MemoFlow.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="cardBackgroundColor">@color/surface</item>
+    </style>
+
+    <!-- Chip 标签样式 -->
+    <style name="Widget.MemoFlow.Chip" parent="Widget.Material3.Chip.Assist">
+        <item name="chipBackgroundColor">@color/heatmap_level_1</item>
+        <item name="chipCornerRadius">12dp</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">@dimen/text_size_caption</item>
+    </style>
+
+    <!-- 导航栏选中项基础样式（父样式存在才能用点号继承） -->
+    <style name="Widget.MemoFlow.NavigationItem" parent="">
+        <item name="android:background">@null</item>
+    </style>
+
+    <!-- 导航栏选中项样式 -->
+    <style name="Widget.MemoFlow.NavigationItem.Selected" parent="Widget.MemoFlow.NavigationItem">
+        <item name="android:background">@drawable/bg_selected_nav_item</item>
+        <item name="android:textColor">@color/on_primary</item>
+    </style>
+
+    <!-- FAB 样式 -->
+    <style name="Widget.MemoFlow.FAB" parent="">
+        <item name="backgroundTint">@color/primary</item>
+        <item name="tint">@color/on_primary</item>
+    </style>
+
+    <!-- Toolbar 样式 -->
+    <style name="Widget.MemoFlow.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/background</item>
+        <item name="titleTextColor">@color/on_background</item>
+    </style>
+</resources>

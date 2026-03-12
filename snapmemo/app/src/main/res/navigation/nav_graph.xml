@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.snapmemo.ui.home.HomeFragment"
+        android:label="@string/nav_all_notes"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_editor"
+            app:destination="@id/editorFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editorFragment"
+        android:name="com.example.snapmemo.ui.editor.EditorFragment"
+        android:label="@string/action_save"
+        tools:layout="@layout/fragment_editor">
+        <argument
+            android:name="memoId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/exploreFragment"
+        android:name="com.example.snapmemo.ui.explore.ExploreFragment"
+        android:label="@string/nav_explore"
+        tools:layout="@layout/fragment_explore" />
+
+    <fragment
+        android:id="@+id/randomWalkFragment"
+        android:name="com.example.snapmemo.ui.random.RandomWalkFragment"
+        android:label="@string/nav_random_walk"
+        tools:layout="@layout/fragment_random_walk">
+        <action
+            android:id="@+id/action_random_to_editor"
+            app:destination="@id/editorFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/aiSummaryFragment"
+        android:name="com.example.snapmemo.ui.ai.AiSummaryFragment"
+        android:label="@string/nav_ai_summary"
+        tools:layout="@layout/fragment_ai_summary" />
+
+    <fragment
+        android:id="@+id/attachmentFragment"
+        android:name="com.example.snapmemo.ui.attachment.AttachmentFragment"
+        android:label="@string/nav_attachment"
+        tools:layout="@layout/fragment_attachment" />
+
+    <fragment
+        android:id="@+id/archiveFragment"
+        android:name="com.example.snapmemo.ui.archive.ArchiveFragment"
+        android:label="@string/nav_archive"
+        tools:layout="@layout/fragment_archive">
+        <action
+            android:id="@+id/action_archive_to_editor"
+            app:destination="@id/editorFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/trashFragment"
+        android:name="com.example.snapmemo.ui.trash.TrashFragment"
+        android:label="@string/nav_trash"
+        tools:layout="@layout/fragment_trash" />
+
+    <fragment
+        android:id="@+id/syncStatusFragment"
+        android:name="com.example.snapmemo.ui.sync.SyncStatusFragment"
+        android:label="@string/nav_sync_status"
+        tools:layout="@layout/fragment_sync_status" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.snapmemo.ui.settings.SettingsFragment"
+        android:label="@string/nav_settings"
+        tools:layout="@layout/fragment_settings" />
+
+</navigation>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MemoFlow</string>
+
+    <!-- 导航菜单 -->
+    <string name="nav_all_notes">全部笔记</string>
+    <string name="nav_explore">探索</string>
+    <string name="nav_random_walk">随机漫步</string>
+    <string name="nav_ai_summary">AI 总结</string>
+    <string name="nav_attachment">附件</string>
+    <string name="nav_archive">归档</string>
+    <string name="nav_trash">回收站</string>
+    <string name="nav_settings">设置</string>
+    <string name="nav_sync_status">同步状态</string>
+
+    <!-- 首页 -->
+    <string name="label_notes_count">笔记</string>
+    <string name="label_tags_count">标签</string>
+    <string name="label_days_count">天</string>
+    <string name="hint_search">搜索笔记…</string>
+    <string name="fab_new_memo">新建笔记</string>
+    <string name="drawer_all_tags">全部标签</string>
+    <string name="drawer_manage_tags">管理</string>
+    <string name="drawer_no_tags">暂无标签</string>
+
+    <!-- 编辑器 -->
+    <string name="hint_editor">记录你的想法…</string>
+    <string name="action_save">保存</string>
+    <string name="action_discard">放弃</string>
+    <string name="action_archive">归档</string>
+    <string name="action_pin">置顶</string>
+    <string name="action_unpin">取消置顶</string>
+    <string name="action_delete">删除</string>
+    <string name="action_add_attachment">添加附件</string>
+    <string name="action_set_reminder">设置提醒</string>
+
+    <!-- 登录 -->
+    <string name="label_server_url">服务器地址</string>
+    <string name="hint_server_url">https://your-memos-server.com</string>
+    <string name="label_username">用户名</string>
+    <string name="hint_username">请输入用户名</string>
+    <string name="label_password">密码</string>
+    <string name="hint_password">请输入密码</string>
+    <string name="btn_login">登录</string>
+    <string name="btn_offline_mode">单机模式（本地存储）</string>
+    <string name="login_title">连接到 Memos</string>
+
+    <!-- 同步状态 -->
+    <string name="sync_status_title">同步状态</string>
+    <string name="sync_group_processing">处理中</string>
+    <string name="sync_group_pending">等待中</string>
+    <string name="sync_group_failed">同步失败</string>
+    <string name="sync_group_completed">已完成</string>
+    <string name="sync_retry_now">立即重试</string>
+    <string name="sync_cancel">取消同步</string>
+    <string name="sync_last_time">上次同步时间: %s</string>
+    <string name="sync_never">从未同步</string>
+
+    <!-- 设置 -->
+    <string name="settings_title">设置</string>
+    <string name="settings_mode">运行模式</string>
+    <string name="settings_mode_offline">单机模式</string>
+    <string name="settings_mode_online">联机模式</string>
+    <string name="settings_server_config">服务器配置</string>
+    <string name="settings_export">导出数据</string>
+    <string name="settings_export_desc">导出为 Markdown + ZIP</string>
+    <string name="settings_about">关于</string>
+    <string name="settings_version">版本 %s</string>
+
+    <!-- 归档 / 回收站 -->
+    <string name="archive_title">归档</string>
+    <string name="trash_title">回收站</string>
+    <string name="action_restore">还原</string>
+    <string name="action_delete_permanently">永久删除</string>
+    <string name="action_unarchive">取消归档</string>
+
+    <!-- 随机漫步 -->
+    <string name="random_walk_title">随机漫步</string>
+    <string name="random_strategy_random">完全随机</string>
+    <string name="random_strategy_tag">标签相似度</string>
+    <string name="random_strategy_time">时间衰减</string>
+    <string name="btn_next_memo">下一条</string>
+
+    <!-- 探索 -->
+    <string name="explore_title">探索</string>
+    <string name="explore_tab_public">公开笔记</string>
+    <string name="explore_tab_tags">热门标签</string>
+    <string name="explore_tab_recommend">推荐</string>
+
+    <!-- AI 总结 -->
+    <string name="ai_summary_title">AI 总结</string>
+    <string name="ai_summary_placeholder">AI 功能即将上线，敬请期待…</string>
+
+    <!-- 附件 -->
+    <string name="attachment_title">附件</string>
+    <string name="attachment_empty">暂无附件</string>
+
+    <!-- 冲突解决 -->
+    <string name="conflict_title">内容冲突</string>
+    <string name="conflict_local">本地版本</string>
+    <string name="conflict_remote">远端版本</string>
+    <string name="conflict_keep_local">保留本地</string>
+    <string name="conflict_use_remote">使用远端</string>
+    <string name="conflict_manual_merge">手动合并</string>
+
+    <!-- 通用 -->
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确认</string>
+    <string name="loading">加载中…</string>
+    <string name="error_network">网络连接失败</string>
+    <string name="error_unknown">未知错误</string>
+    <string name="empty_list">暂无内容</string>
+    <string name="pull_to_refresh">下拉刷新</string>
+</resources>

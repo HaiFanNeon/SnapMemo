@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/group_main">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_all_notes"
+            android:title="@string/nav_all_notes" />
+        <item
+            android:id="@+id/nav_explore"
+            android:icon="@drawable/ic_explore"
+            android:title="@string/nav_explore" />
+        <item
+            android:id="@+id/nav_random_walk"
+            android:icon="@drawable/ic_random_walk"
+            android:title="@string/nav_random_walk" />
+        <item
+            android:id="@+id/nav_ai_summary"
+            android:icon="@drawable/ic_ai_summary"
+            android:title="@string/nav_ai_summary" />
+        <item
+            android:id="@+id/nav_attachment"
+            android:icon="@drawable/ic_attachment"
+            android:title="@string/nav_attachment" />
+        <item
+            android:id="@+id/nav_archive"
+            android:icon="@drawable/ic_archive"
+            android:title="@string/nav_archive" />
+    </group>
+    <group android:id="@+id/group_bottom">
+        <item
+            android:id="@+id/nav_trash"
+            android:icon="@drawable/ic_trash"
+            android:title="@string/nav_trash" />
+    </group>
+</menu>
